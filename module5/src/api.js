@@ -10,6 +10,5 @@ export const searchImages = async (value) => {
     }
   })
 
-  const photos = response.data.results.map((result) => result.urls.small)
-  return photos
+  return response.data.results
 }

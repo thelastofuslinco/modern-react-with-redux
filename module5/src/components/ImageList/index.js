@@ -3,10 +3,11 @@ import { ImageShow } from '../ImageShow'
 import './styles.css'
 
 export const ImageList = ({ images }) => {
+  console.log(images)
   return (
     <div className="imageGrid">
-      {images.map((image, index) => (
-        <ImageShow key={index} src={image} />
+      {images.map((image) => (
+        <ImageShow key={image.id} src={image.urls.small} />
       ))}
     </div>
   )
