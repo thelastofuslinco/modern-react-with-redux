@@ -3,7 +3,6 @@ import { ImageShow } from '../ImageShow'
 import './styles.css'
 
 export const ImageList = ({ images }) => {
-  console.log(images)
   return (
     <div className="imageGrid">
       {images.map((image) => (
