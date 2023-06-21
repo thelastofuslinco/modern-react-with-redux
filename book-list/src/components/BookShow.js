@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { BookEdit } from './BookEdit'
+import useBooksContext from '../hooks/useBooksContext'
 
-export const BookShow = ({ book, onEdit, onDelete }) => {
+export const BookShow = ({ book }) => {
+  const { deleteBook, editBook } = useBooksContext()
   const [showEdit, setShowEdit] = useState(false)
 
   return (
@@ -11,7 +13,7 @@ export const BookShow = ({ book, onEdit, onDelete }) => {
           className="edit"
           onClick={() => setShowEdit(!showEdit)}
         ></button>
-        <button className="delete" onClick={() => onDelete(book.id)}></button>
+        <button className="delete" onClick={() => deleteBook(book.id)}></button>
       </div>
 
       <img alt="books" src={`https://picsum.photos/seed/${book.id}/300/200`} />
@@ -20,7 +22,7 @@ export const BookShow = ({ book, onEdit, onDelete }) => {
         <BookEdit
           book={book}
           onSubmit={(value) => {
-            onEdit(value)
+            editBook(value)
             setShowEdit(!showEdit)
           }}
         />

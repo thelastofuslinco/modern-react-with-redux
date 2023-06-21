@@ -1,10 +1,13 @@
 import React from 'react'
+import useBooksContext from '../hooks/useBooksContext'
 
-export const BookCreate = ({ onCreate }) => {
+export const BookCreate = () => {
+  const { createBook } = useBooksContext()
+
   const handleSubmit = (event) => {
     event.preventDefault()
     const { title } = event.target
-    onCreate(title.value)
+    createBook(title.value)
   }
 
   return (
