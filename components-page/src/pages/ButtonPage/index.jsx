@@ -1,24 +1,24 @@
 import React from 'react'
-import { Button } from '../../components'
-import { GoBell, GoCloud, GoDatabase } from 'react-icons/go'
+import Button from '../../components/Button'
+import { GoDatabase } from 'react-icons/go'
 
-export const ButtonPage = () => {
+const ButtonPage = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Button warning rounded>
-        <GoBell />
-        sss
+      <Button>default button</Button>
+      <Button rounded>rounded button</Button>
+      <Button rounded warning>
+        Warning button
       </Button>
-      <Button warning rounded>
-        <GoCloud />
-        sss
+      <Button rounded warning outline>
+        Outline button
       </Button>
-
-      <Button warning rounded>
+      <Button rounded warning outline>
         <GoDatabase />
-        sss
+        With icon
       </Button>
     </div>
   )
 }
+
+export default ButtonPage

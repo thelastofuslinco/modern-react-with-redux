@@ -1,22 +1,49 @@
 import React, { useState } from 'react'
 import { GoChevronDown, GoChevronRight } from 'react-icons/go'
+import PropTypes from 'prop-types'
 
-export const Accordion = ({ items }) => {
+const Accordion = ({ options }) => {
   const [open, setOpen] = useState(1)
 
-  const renderedItems = items.map((item, index) => {
+  const handleClick = (accordionIndex) => {
+    setOpen((prevState) => {
+      if (prevState === accordionIndex) {
+        return -1
+      } else {
+        return accordionIndex
+      }
+    })
+  }
+
+  const renderedItems = options?.map((option, index) => {
     const expand = open === index
-    const icon = expand ? <GoChevronDown /> : <GoChevronRight />
+    const icon = expand ? (
+      <GoChevronDown className="text-2xl" />
+    ) : (
+      <GoChevronRight className="text-2xl" />
+    )
 
     return (
-      <div key={item.id} onClick={() => setOpen(index)}>
-        <div className="flex gap-2 items-center">
-          {icon} {item.label}
+      <div key={option.id} onClick={() => handleClick(index)}>
+        <div className="flex justify-between p-3 bg-gray-50 items-center cursor-pointer ">
+          {option.label} {icon}
         </div>
-        {expand && <div>{item.content}</div>}
+        {expand && <div className="p-3 ">{option.content}</div>}
       </div>
     )
   })
 
   return <div>{renderedItems}</div>
+}
+
+export default Accordion
+
+Accordion.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      label: PropTypes.string,
+      content: PropTypes.node
+    })
+  )
 }

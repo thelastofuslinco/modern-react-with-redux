@@ -1,7 +1,7 @@
 import React from 'react'
-import { Accordion } from '../../components'
+import Accordion from '../../components/Accordion'
 
-export const AccordionPage = () => {
+const AccordionPage = () => {
   const items = [
     { id: 1, label: 'Can i use React', content: 'Yes you can use React' },
     { id: 2, label: 'Can i use Css', content: 'Yes you can use Css' },
@@ -14,7 +14,9 @@ export const AccordionPage = () => {
 
   return (
     <div>
-      <Accordion items={items} />
+      <Accordion options={items} />
     </div>
   )
 }
+
+export default AccordionPage
