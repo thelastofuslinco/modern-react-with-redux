@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Table = ({ rows, columns, fnKey }) => {
+const Table = ({ data, configs, fnKey }) => {
   return (
     <table className="table-auto border-spacing-2">
       <thead>
         <tr className="border-b-2">
-          {columns.map((column) => {
+          {configs.map((column) => {
             if (column.header)
               return (
                 <React.Fragment key={column.label}>
@@ -17,9 +17,9 @@ const Table = ({ rows, columns, fnKey }) => {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
+        {data.map((row) => (
           <tr key={fnKey(row)} className="border-b">
-            {columns.map((column) => (
+            {configs.map((column) => (
               <td key={column.label} className="p-3">
                 {column.render(row)}
               </td>

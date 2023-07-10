@@ -1,21 +1,13 @@
-import React, { useState } from 'react'
-import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
+import React from 'react'
 import Table from '../Table'
+import useSort from '../../hooks/useSort'
+import { GoTriangleDown, GoTriangleUp } from 'react-icons/go'
 
-const SortableTable = ({ columns, rows, ...props }) => {
-  const [sortOrder, setSortOrder] = useState(null)
-  const [sortBy, setSortBy] = useState(null)
+const SortableTable = ({ configs, data, ...props }) => {
+  const { sortBy, sortOrder, sortedData, setSortData } = useSort(data, configs)
 
   const getIcons = (label) => {
-    if (label !== sortBy)
-      return (
-        <div className="flex flex-col">
-          <GoTriangleUp />
-          <GoTriangleDown />
-        </div>
-      )
-
-    if (setSortOrder === null) {
+    if (sortOrder === null || label !== sortBy) {
       return (
         <div className="flex flex-col">
           <GoTriangleUp />
@@ -37,38 +29,7 @@ const SortableTable = ({ columns, rows, ...props }) => {
     }
   }
 
-  const handleClick = (label) => {
-    // sort order cycle
-    if (sortOrder === null || sortBy !== label) {
-      setSortOrder('asc')
-      setSortBy(label)
-    } else if (sortOrder === 'asc') {
-      setSortOrder('desc')
-      setSortBy(label)
-    } else {
-      setSortOrder(null)
-      setSortBy(null)
-    }
-  }
-
-  let sortedRows = rows
-  if (sortOrder && sortBy) {
-    const { sort } = columns.find((column) => column.label === sortBy)
-    sortedRows = [...rows].sort((a, b) => {
-      const valueA = sort(a)
-      const valueB = sort(b)
-
-      const reverseOrder = sortOrder === 'asc' ? 1 : -1
-
-      if (typeof valueA === 'string') {
-        return valueA.localeCompare(valueB) * reverseOrder
-      } else {
-        return (valueA - valueB) * reverseOrder
-      }
-    })
-  }
-
-  const updateColumns = columns.map((column) => {
+  const updateColumns = configs.map((column) => {
     if (!column.sort) {
       return column
     }
@@ -77,7 +38,7 @@ const SortableTable = ({ columns, rows, ...props }) => {
       ...column,
       header: () => (
         <th
-          onClick={() => handleClick(column.label)}
+          onClick={() => setSortData(column.label)}
           className="flex gap-2 items-center"
         >
           {column.label}
@@ -87,7 +48,7 @@ const SortableTable = ({ columns, rows, ...props }) => {
     }
   })
 
-  return <Table rows={sortedRows} columns={updateColumns} {...props} />
+  return <Table data={sortedData} configs={updateColumns} {...props} />
 }
 
 export default SortableTable
