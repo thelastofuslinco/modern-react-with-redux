@@ -31,7 +31,7 @@ const Button = ({
 
   return (
     <button
-      className={`${rest.className} flex items-center gap-2 px-6 py-3 border ${borderRadius} ${bgColor} ${textColor} hover:shadow-md`}
+      className={`${rest.className} flex items-center gap-2 px-4 py-3 border ${borderRadius} ${bgColor} ${textColor} hover:shadow-md`}
       {...rest}
     >
       {children}

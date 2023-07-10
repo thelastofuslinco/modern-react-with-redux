@@ -5,6 +5,7 @@ import Route from './components/Route'
 import Sidebar from './components/Sidebar'
 import ModalPage from './pages/ModalPage'
 import TablePage from './pages/TablePage'
+import CounterPage from './pages/CounterPage'
 
 const App = () => {
   const links = [
@@ -12,7 +13,8 @@ const App = () => {
     { label: 'Accordion', to: '/accordion' },
     { label: 'Dropdown', to: '/dropdown' },
     { label: 'Modal', to: '/modal' },
-    { label: 'Table', to: '/table' }
+    { label: 'Table', to: '/table' },
+    { label: 'Counter', to: '/counter' }
   ]
 
   return (
@@ -34,6 +36,9 @@ const App = () => {
         </Route>
         <Route path={'/table'}>
           <TablePage />
+        </Route>
+        <Route path={'/counter'}>
+          <CounterPage initialCount={10} />
         </Route>
       </div>
     </div>
