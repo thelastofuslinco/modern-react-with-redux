@@ -5,9 +5,15 @@ const Table = ({ rows, columns, fnKey }) => {
     <table className="table-auto border-spacing-2">
       <thead>
         <tr className="border-b-2">
-          {columns.map((column) => (
-            <th key={column.label}>{column.label}</th>
-          ))}
+          {columns.map((column) => {
+            if (column.header)
+              return (
+                <React.Fragment key={column.label}>
+                  {column.header()}
+                </React.Fragment>
+              )
+            return <th key={column.label}>{column.label}</th>
+          })}
         </tr>
       </thead>
       <tbody>

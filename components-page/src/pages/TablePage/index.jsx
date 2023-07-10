@@ -1,5 +1,6 @@
 import React from 'react'
 import Table from '../../components/Table'
+import SortableTable from '../../components/SortableTable'
 
 const TablePage = () => {
   const rows = [
@@ -10,18 +11,29 @@ const TablePage = () => {
   ]
 
   const columns = [
-    { label: 'Name', render: (row) => row.name },
+    {
+      label: 'Name',
+      render: (row) => row.name,
+      header: () => <th className="bg-red-500">Score</th>,
+      sort: (row) => row.name
+    },
     {
       label: 'Color',
       render: (row) => <div className={`${row.color} p-3 m-2`} />
     },
-    { label: 'Score', render: (row) => row.score }
+    {
+      label: 'Score',
+      render: (row) => row.score,
+      header: () => <th className="bg-red-500">Score</th>,
+      sort: (row) => row.score
+    }
   ]
 
   const fnKey = (row) => row.name
 
   return (
-    <div>
+    <div className="flex flex-col gap-10">
+      <SortableTable rows={rows} columns={columns} fnKey={fnKey} />
       <Table rows={rows} columns={columns} fnKey={fnKey} />
     </div>
   )
