@@ -1,49 +1,49 @@
 import React, { useReducer } from 'react'
+import { produce } from 'immer'
 import Panel from '../../components/Panel'
 import Button from '../../components/Button'
 
-const reducer = (state, action) => {
-  if (action.type === 'incremented_count') {
-    return {
-      ...state,
-      count: state.count + 1
-    }
-  } else if (action.type === 'decrement_count') {
-    return {
-      ...state,
-      count: state.count - 1
-    }
-  } else if (action.type === 'change_value_to_add') {
-    return {
-      ...state,
-      valueToAdd: action.nextValue
-    }
-  } else if (action.type === 'add_value') {
-    return {
-      count: state.count + state.valueToAdd,
-      valueToAdd: 0
-    }
-  }
+const INCREMENT_COUNT = 'incremented_count'
+const DECREMENT_COUNT = 'decrement_count'
+const CHANGE_VALUE_TO_ADD = 'change_value_to_add'
+const ADD_VALUE_TO_COUNT = 'add_value_to_count'
 
-  throw Error('Unknown action.')
+const reducer = (state, action) => {
+  switch (action.type) {
+    case INCREMENT_COUNT:
+      state.count = state.count + 1
+      return
+    case DECREMENT_COUNT:
+      state.count = state.count - 1
+      return
+    case CHANGE_VALUE_TO_ADD:
+      state.valueToAdd = action.nextValue
+      return
+    case ADD_VALUE_TO_COUNT:
+      state.count = state.count + state.valueToAdd
+      state.valueToAdd = 0
+      return
+    default:
+      return state
+  }
 }
 
 const CounterPage = ({ initialCount }) => {
   //   const [count, setCount] = useState(initialCount)
   //   const [valueToAdd, setValueToAdd] = useState(0)
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(produce(reducer), {
     count: initialCount,
     valueToAdd: 0
   })
 
-  const increment = () => dispatch({ type: 'incremented_count' })
-  const decrement = () => dispatch({ type: 'decrement_count' })
+  const increment = () => dispatch({ type: INCREMENT_COUNT })
+  const decrement = () => dispatch({ type: DECREMENT_COUNT })
 
   const handleChange = (event) => {
     const value = parseInt(event.target.value) || 0
 
     dispatch({
-      type: 'change_value_to_add',
+      type: CHANGE_VALUE_TO_ADD,
       nextValue: value
     })
   }
@@ -52,7 +52,7 @@ const CounterPage = ({ initialCount }) => {
     event.preventDefault()
 
     dispatch({
-      type: 'add_value'
+      type: ADD_VALUE_TO_COUNT
     })
   }
 
