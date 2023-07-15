@@ -35,7 +35,7 @@ function App() {
       <button onClick={() => dispatch(addMovie('movie'))}>addMovie</button>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {songs.map((song) => (
-          <div style={{ backgroundColor: 'red' }}>
+          <div key={song} style={{ backgroundColor: 'red' }}>
             {song}{' '}
             <button onClick={() => dispatch(removeSong(song))}>
               removeSong
@@ -43,7 +43,7 @@ function App() {
           </div>
         ))}
         {movies.map((movie) => (
-          <div style={{ backgroundColor: 'blue' }}>
+          <div key={movie} style={{ backgroundColor: 'blue' }}>
             {movie}{' '}
             <button onClick={() => dispatch(removeMovie(movie))}>
               removeMovies
