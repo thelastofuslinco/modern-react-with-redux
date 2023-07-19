@@ -1,23 +1,24 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { addCar, changeCost, changeName } from '../../store'
 import { MdPriceChange, MdDirectionsCar } from 'react-icons/md'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
 
 const CarForm = () => {
-  const { name, cost } = useSelector((state) => state.form)
-  const dispach = useDispatch()
+  const { name, cost } = useAppSelector((state) => state.form)
+  const dispach = useAppDispatch()
 
   const clearInput = () => {
     dispach(changeName(''))
     dispach(changeCost(''))
   }
 
-  const isDisabled = name === '' || cost === ''
+  const isDisabled = name === '' || cost === 0
 
   return (
     <div className="columns">
       <div className="field column">
-        <label class="label">Car name</label>
+        <label className="label">Car name</label>
         <div className="control has-icons-left">
           <input
             className="input"
@@ -33,7 +34,7 @@ const CarForm = () => {
       </div>
 
       <div className="field column">
-        <label class="label">Car cost</label>
+        <label className="label">Car cost</label>
         <div className="control has-icons-left has-icons-right">
           <input
             className="input"

@@ -7,9 +7,9 @@ import SiriImage from './images/siri.png'
 const App = () => {
   return (
     <div>
-      <section class="hero is-primary">
-        <div class="hero-body">
-          <p class="title">Personal Digital Assistants</p>
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">Personal Digital Assistants</p>
         </div>
       </section>
 

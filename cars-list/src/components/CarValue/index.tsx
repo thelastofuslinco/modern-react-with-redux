@@ -1,8 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../hooks/useAppSelector'
 
 const CarValue = () => {
-  const { cars, searchTerm } = useSelector((state) => state.cars)
+  const { cars, searchTerm } = useAppSelector((state) => state.cars)
 
   const value = cars.reduce((accumulator, car) => accumulator + car.cost, 0)
   return (

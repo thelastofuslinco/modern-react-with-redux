@@ -1,10 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { changeSearchTerm } from '../../store'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
 
 const CarSearch = () => {
-  const { searchTerm } = useSelector((state) => state.cars)
-  const dispach = useDispatch()
+  const { searchTerm } = useAppSelector((state) => state.cars)
+  const dispach = useAppDispatch()
 
   return (
     <div>
