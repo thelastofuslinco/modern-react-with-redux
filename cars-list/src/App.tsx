@@ -5,7 +5,7 @@ import CarValue from './components/CarValue'
 
 function App() {
   return (
-    <div>
+    <div style={{ height: '100vh', padding: '1rem' }}>
       <CarForm />
       <CarSearch />
       <CarList />

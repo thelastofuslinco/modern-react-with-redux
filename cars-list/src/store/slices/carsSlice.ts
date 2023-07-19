@@ -12,7 +12,7 @@ interface Car {
 }
 
 interface CarsSliceInterface {
-  cars: Array<Car>
+  data: Array<Car>
   searchTerm: string
 }
 
@@ -22,19 +22,19 @@ const carsSlice = createSlice<
 >({
   name: 'car',
   initialState: {
-    cars: [],
+    data: [],
     searchTerm: ''
   },
   reducers: {
     addCar: (state, action) => {
-      state.cars.push({ id: nanoid(), ...action.payload })
+      state.data.push({ id: nanoid(), ...action.payload })
     },
     removeCar: (state, action: PayloadAction<Car>) => {
-      const carIndex = state.cars.findIndex(
+      const carIndex = state.data.findIndex(
         (car) => car.id === action.payload.id
       )
 
-      state.cars.splice(carIndex, 1)
+      state.data.splice(carIndex, 1)
     },
     changeSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload

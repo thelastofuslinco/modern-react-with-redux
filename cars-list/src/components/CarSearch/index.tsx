@@ -8,12 +8,22 @@ const CarSearch = () => {
   const dispach = useAppDispatch()
 
   return (
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(event) => dispach(changeSearchTerm(event.target.value))}
-      />
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '1rem'
+      }}
+    >
+      <h1 className="title">My Car</h1>
+      <div>
+        <input
+          className="input"
+          type="text"
+          value={searchTerm}
+          onChange={(event) => dispach(changeSearchTerm(event.target.value))}
+        />
+      </div>
     </div>
   )
 }
