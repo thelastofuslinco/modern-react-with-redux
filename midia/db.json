@@ -1,5 +1,26 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Sergio Rowe",
+      "id": 8
+    },
+    {
+      "name": "Myra Lueilwitz",
+      "id": 12
+    },
+    {
+      "name": "Ada West",
+      "id": 13
+    },
+    {
+      "name": "Merle Lehner",
+      "id": 14
+    },
+    {
+      "name": "Kenny Braun",
+      "id": 15
+    }
+  ],
   "albums": [],
   "photos": []
 }

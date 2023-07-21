@@ -1,13 +1,8 @@
 import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
-
-interface Album {
-  id: number
-  title: string
-  userId: number
-}
+import { AlbumModel } from '../../model/albumModel'
 
 interface AlbumsSliceInterface {
-  data: Array<Album>
+  data: Array<AlbumModel>
 }
 
 const albumsSlice = createSlice<
