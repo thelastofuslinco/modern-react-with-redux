@@ -1,3 +1,5 @@
+import { GoSync } from 'react-icons/go'
+
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   primary?: boolean
@@ -7,6 +9,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   danger?: boolean
   outline?: boolean
   rounded?: boolean
+  loading?: boolean
 }
 
 const Button = ({
@@ -18,12 +21,15 @@ const Button = ({
   danger,
   outline,
   rounded,
+  loading,
   ...rest
 }: Props) => {
   let bgColor = 'border-blue-500 bg-blue-500'
   let borderRadius = undefined
   let textColor = 'text-white'
+  let opacity = 'opacity-100'
 
+  if (loading) opacity = 'opacity-80'
   if (rounded) borderRadius = 'rounded-full'
   if (outline) {
     bgColor = 'bg-white'
@@ -39,10 +45,11 @@ const Button = ({
 
   return (
     <button
-      className={`${rest.className} flex items-center gap-2 px-4 py-3 border ${borderRadius} ${bgColor} ${textColor} hover:shadow-md`}
       {...rest}
+      disabled={loading}
+      className={`${rest.className} h-8 flex items-center gap-2 px-4 py-3 border ${borderRadius} ${bgColor} ${textColor} ${opacity} hover:shadow-md`}
     >
-      {children}
+      {loading ? <GoSync className="animate-spin" /> : children}
     </button>
   )
 }

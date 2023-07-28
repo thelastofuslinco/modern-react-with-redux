@@ -1,9 +1,9 @@
-import UserList from './components/UserList'
+import UserContainer from './components/UserContainer'
 
 function App() {
   return (
-    <div>
-      <UserList />
+    <div className="p-2">
+      <UserContainer />
     </div>
   )
 }
