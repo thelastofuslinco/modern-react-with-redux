@@ -1,6 +1,6 @@
-import { useThunk } from '../../../../hooks/useThunk'
-import { addUser } from '../../../../store'
-import Button from '../../../Button'
+import { useThunk } from '../../../hooks/useThunk'
+import { addUser } from '../../../store'
+import Button from '../../Button'
 import { faker } from '@faker-js/faker'
 import { GoXCircle } from 'react-icons/go'
 

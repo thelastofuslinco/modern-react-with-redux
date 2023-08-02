@@ -1,16 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit'
 import usersReducer from './slices/usersSlice'
-import albumsReducer from './slices/albumsSlice'
-import photosReducer from './slices/photos.Slice'
+import albumsApi from './apis/albumsApi'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
-    albums: albumsReducer,
-    photos: photosReducer
+    [albumsApi.reducerPath]: albumsApi.reducer
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat([albumsApi.middleware])
   }
 })
 
+setupListeners(store.dispatch)
+
+export * from './apis/albumsApi'
 export * from './thunks/users'
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

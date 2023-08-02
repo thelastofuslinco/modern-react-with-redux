@@ -4,13 +4,13 @@ import { useAppDispatch } from './useAppDispatch'
 export function useThunk<
   T extends (value: any) => any,
   Arg extends Parameters<T>[0]
->(thunk: T): [(arg?: Arg) => void, boolean, Error | null] {
+>(thunk: T): [(arg: Arg) => void, boolean, Error | null] {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const dispatch = useAppDispatch()
 
   const runThunk = useCallback(
-    (arg?: Arg) => {
+    (arg: Arg) => {
       setLoading(true)
       dispatch(thunk(arg))
         .unwrap()

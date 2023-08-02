@@ -1,6 +1,6 @@
-import Button from '../../../Button'
-import { deleteUser } from '../../../../store'
-import { useThunk } from '../../../../hooks/useThunk'
+import Button from '../../Button'
+import { deleteUser } from '../../../store'
+import { useThunk } from '../../../hooks/useThunk'
 import { GoTrash, GoXCircle } from 'react-icons/go'
 
 interface Props {
