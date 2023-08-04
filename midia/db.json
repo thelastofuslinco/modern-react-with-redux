@@ -15,56 +15,6 @@
   ],
   "albums": [
     {
-      "title": "Don't Worry Be Happy",
-      "userId": 8,
-      "id": 5
-    },
-    {
-      "title": "What a Fool Believes",
-      "userId": 11,
-      "id": 6
-    },
-    {
-      "title": "Time of the Season",
-      "userId": 8,
-      "id": 8
-    },
-    {
-      "title": "Whole Lotta Love",
-      "userId": 8,
-      "id": 9
-    },
-    {
-      "title": "Theme From 'A Summer Place'",
-      "userId": 11,
-      "id": 10
-    },
-    {
-      "title": "Mood Indigo",
-      "userId": 11,
-      "id": 11
-    },
-    {
-      "title": "Le Freak",
-      "userId": 8,
-      "id": 12
-    },
-    {
-      "title": "I've Heard That Song Before",
-      "userId": 8,
-      "id": 13
-    },
-    {
-      "title": "At the Hop",
-      "userId": 11,
-      "id": 14
-    },
-    {
-      "title": "December 1963 (Oh What a Night)",
-      "userId": 8,
-      "id": 15
-    },
-    {
       "title": "Under the Boardwalk",
       "userId": 8,
       "id": 16
@@ -103,27 +53,47 @@
       "title": "Big Girls Don't Cry",
       "userId": 8,
       "id": 26
+    },
+    {
+      "title": "I Got You (I Feel Good)",
+      "userId": 8,
+      "id": 27
+    },
+    {
+      "title": "Let's Get it On",
+      "userId": 8,
+      "id": 28
+    },
+    {
+      "title": "The Girl From Ipanema",
+      "userId": 8,
+      "id": 29
+    },
+    {
+      "title": "Like a Virgin",
+      "userId": 8,
+      "id": 30
     }
   ],
   "photos": [
     {
-      "url": "https://picsum.photos/seed/U0QI4sL/640/480",
-      "albumId": 5,
+      "url": "https://loremflickr.com/640/480?lock=6275201989869568",
+      "albumId": 19,
       "id": 2
     },
     {
-      "url": "https://loremflickr.com/640/480?lock=3693674191912960",
-      "albumId": 5,
+      "url": "https://picsum.photos/seed/QxG8f8D9/640/480",
+      "albumId": 19,
       "id": 3
     },
     {
-      "url": "https://picsum.photos/seed/K3ZH8p4/640/480",
-      "albumId": 5,
+      "url": "https://loremflickr.com/640/480?lock=3623576406065152",
+      "albumId": 16,
       "id": 4
     },
     {
-      "url": "https://loremflickr.com/640/480?lock=1722323881164800",
-      "albumId": 5,
+      "url": "https://picsum.photos/seed/ykC9Jm/640/480",
+      "albumId": 16,
       "id": 5
     }
   ]

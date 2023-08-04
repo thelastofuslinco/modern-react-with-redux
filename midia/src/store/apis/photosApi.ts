@@ -4,18 +4,26 @@ import { AlbumModel } from '../../model/albumModel'
 
 const photosApi = createApi({
   reducerPath: 'photos',
-  tagTypes: ['Photos'],
+  tagTypes: ['Photos', 'PhotosAlbum'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001'
   }),
   endpoints: (build) => ({
     getPhotos: build.query<PhotoModel[], AlbumModel>({
       query: (album) => ({ url: '/photos', params: { albumId: album.id } }),
-      providesTags: (result, error, album) => [{ type: 'Photos', id: album.id }]
+      providesTags: (result, error, album) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Photos' as const, id })),
+              { type: 'PhotosAlbum', id: album.id }
+            ]
+          : [{ type: 'PhotosAlbum', id: album.id }]
     }),
     removePhoto: build.mutation<PhotoModel, Partial<PhotoModel>>({
       query: (photo) => ({ url: `photos/${photo.id}`, method: 'DELETE' }),
-      invalidatesTags: (photo) => [{ type: 'Photos', id: photo?.albumId }]
+      invalidatesTags: (result, error, photo) => [
+        { type: 'Photos', id: photo?.id }
+      ]
     }),
     addPhoto: build.mutation<PhotoModel, Partial<PhotoModel>>({
       query: ({ id, ...patch }) => ({
@@ -23,7 +31,9 @@ const photosApi = createApi({
         method: 'POST',
         body: patch
       }),
-      invalidatesTags: (photo) => [{ type: 'Photos', id: photo?.albumId }]
+      invalidatesTags: (result, error, photo) => [
+        { type: 'PhotosAlbum', id: photo?.albumId }
+      ]
     })
   })
 })
