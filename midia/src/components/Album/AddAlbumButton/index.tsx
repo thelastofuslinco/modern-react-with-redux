@@ -21,7 +21,7 @@ const AddAlbumButton = ({ user }: Props) => {
           userId: user.id
         })
       }
-      danger={error ? true : false}
+      danger={error}
     >
       {error ? <GoXCircle /> : 'add album'}
     </Button>

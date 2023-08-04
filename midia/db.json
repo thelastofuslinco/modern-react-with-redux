@@ -7,29 +7,13 @@
     {
       "name": "Dr. Wesley Wintheiser",
       "id": 11
+    },
+    {
+      "name": "Earnest Koch",
+      "id": 13
     }
   ],
   "albums": [
-    {
-      "id": 1,
-      "title": "Album 1",
-      "userId": 11
-    },
-    {
-      "title": "Mony Mony",
-      "userId": 8,
-      "id": 2
-    },
-    {
-      "title": "Whoomp! (There it Is)",
-      "userId": 11,
-      "id": 3
-    },
-    {
-      "title": "Heartbreak Hotel",
-      "userId": 8,
-      "id": 4
-    },
     {
       "title": "Don't Worry Be Happy",
       "userId": 8,
@@ -41,15 +25,106 @@
       "id": 6
     },
     {
-      "title": "Girls Just Wanna Have Fun",
-      "userId": 11,
-      "id": 7
-    },
-    {
       "title": "Time of the Season",
       "userId": 8,
       "id": 8
+    },
+    {
+      "title": "Whole Lotta Love",
+      "userId": 8,
+      "id": 9
+    },
+    {
+      "title": "Theme From 'A Summer Place'",
+      "userId": 11,
+      "id": 10
+    },
+    {
+      "title": "Mood Indigo",
+      "userId": 11,
+      "id": 11
+    },
+    {
+      "title": "Le Freak",
+      "userId": 8,
+      "id": 12
+    },
+    {
+      "title": "I've Heard That Song Before",
+      "userId": 8,
+      "id": 13
+    },
+    {
+      "title": "At the Hop",
+      "userId": 11,
+      "id": 14
+    },
+    {
+      "title": "December 1963 (Oh What a Night)",
+      "userId": 8,
+      "id": 15
+    },
+    {
+      "title": "Under the Boardwalk",
+      "userId": 8,
+      "id": 16
+    },
+    {
+      "title": "Another Day in Paradise",
+      "userId": 8,
+      "id": 19
+    },
+    {
+      "title": "Girls Just Wanna Have Fun",
+      "userId": 13,
+      "id": 20
+    },
+    {
+      "title": "Un-Break My Heart",
+      "userId": 13,
+      "id": 21
+    },
+    {
+      "title": "Rock Your Baby",
+      "userId": 11,
+      "id": 22
+    },
+    {
+      "title": "Just Dance",
+      "userId": 8,
+      "id": 24
+    },
+    {
+      "title": "The Reason",
+      "userId": 11,
+      "id": 25
+    },
+    {
+      "title": "Big Girls Don't Cry",
+      "userId": 8,
+      "id": 26
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "url": "https://picsum.photos/seed/U0QI4sL/640/480",
+      "albumId": 5,
+      "id": 2
+    },
+    {
+      "url": "https://loremflickr.com/640/480?lock=3693674191912960",
+      "albumId": 5,
+      "id": 3
+    },
+    {
+      "url": "https://picsum.photos/seed/K3ZH8p4/640/480",
+      "albumId": 5,
+      "id": 4
+    },
+    {
+      "url": "https://loremflickr.com/640/480?lock=1722323881164800",
+      "albumId": 5,
+      "id": 5
+    }
+  ]
 }

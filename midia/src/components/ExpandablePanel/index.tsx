@@ -18,7 +18,7 @@ const ExpandablePanel = ({ header, children }: Props) => {
         <div className="flex flex-row items-center justify-between">
           {header}
         </div>
-        {expanded ? <GoChevronDown /> : <GoChevronLeft />}
+        <div>{expanded ? <GoChevronDown /> : <GoChevronLeft />}</div>
       </div>
       {expanded && <div className="p-2 border-t">{children}</div>}
     </div>

@@ -1,8 +1,4 @@
-import {
-  BaseQueryFn,
-  createApi,
-  fetchBaseQuery
-} from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { AlbumModel } from '../../model/albumModel'
 import { UserModel } from '../../model/userModel'
 
@@ -15,13 +11,11 @@ const albumsApi = createApi({
   endpoints: (build) => ({
     getAlbums: build.query<AlbumModel[], UserModel>({
       query: (user) => ({ url: '/albums', params: { userId: user.id } }),
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: 'Albums' as const, id })),
-              { type: 'Albums', id: 'LIST' }
-            ]
-          : [{ type: 'Albums', id: 'LIST' }]
+      providesTags: (result, error, user) => [{ type: 'Albums', id: user.id }]
+    }),
+    removeAlbum: build.mutation<AlbumModel, Partial<AlbumModel>>({
+      query: (album) => ({ url: `albums/${album.id}`, method: 'DELETE' }),
+      invalidatesTags: (album) => [{ type: 'Albums', id: album?.userId }]
     }),
     addAlbum: build.mutation<AlbumModel, Partial<AlbumModel>>({
       query: ({ id, ...patch }) => ({
@@ -29,10 +23,14 @@ const albumsApi = createApi({
         method: 'POST',
         body: patch
       }),
-      invalidatesTags: [{ type: 'Albums', id: 'LIST' }]
+      invalidatesTags: (album) => [{ type: 'Albums', id: album?.userId }]
     })
   })
 })
 
-export const { useGetAlbumsQuery, useAddAlbumMutation } = albumsApi
+export const {
+  useGetAlbumsQuery,
+  useAddAlbumMutation,
+  useRemoveAlbumMutation
+} = albumsApi
 export default albumsApi

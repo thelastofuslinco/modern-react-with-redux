@@ -12,9 +12,9 @@ const Skeleton = (props: Props) => {
         .map((v, index) => {
           return (
             <div
-              key={index}
-              className="animate-pulse bg-blue-300 border border-blue-300 shadow rounded-md p-5 max-w w-full mx-auto"
               {...props}
+              key={index}
+              className="animate-pulse bg-blue-300 border border-blue-300 shadow rounded-md h-10 max-w w-full mx-auto"
             />
           )
         })}
